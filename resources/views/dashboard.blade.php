@@ -6,9 +6,9 @@
     @include('components.navbar')
     </a>
     <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center" style="margin-top: 100px;">
-        @include('components.post-card')
-        @include('components.post-card')
-        @include('components.post-card')
-        @include('components.post-card')
+        
+        @foreach ($posts as $post)
+            @include('components.post-card', compact('post','user'))
+        @endforeach
     </div>
 @endsection

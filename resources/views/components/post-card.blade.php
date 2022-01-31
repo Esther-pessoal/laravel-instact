@@ -2,15 +2,15 @@
 
     <div class="card-header bg-white border-0">
         <i class="bi bi-person-circle fs-5 me-2"></i>
-        <span class="fw-bold">João Silva</span>
+        <span class="fw-bold">{{$post->user->name}}</span>
     </div>
 
-    <img src="https://i.imgur.com/BEqFxWf.png" class="card-img rounded-0" alt="">
+    <img src="{{asset($post->image)}}" class="card-img rounded-0" alt="">
 
     <div class="card-body">
         <p class="card-text">
-            <span class="fw-bold">João Silva</span> 
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum eveniet error nihil aperiam. Temporibus sed maxime repellat inventore accusamus animi quibusdam corporis exercitationem, ea, atque odio sit ratione error eligendi?
+            <span class="fw-bold">{{$post->user->name}}</span> 
+            {{$post->description}}
         </p>
     </div>
 

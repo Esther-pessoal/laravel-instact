@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -40,7 +41,18 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $user = auth()->user();
+
+        $path = $request->photo->store('public/images');
+        $url = Storage::url($path);
+        
+        Post::create([
+            'image' => $url,
+            'description' => $request->description,
+            'user_id' => $user->id
+        ]);
+
+        return redirect('/dashboard');
     }
 
     /**
