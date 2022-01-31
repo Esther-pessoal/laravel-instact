@@ -15,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $posts = Post::orderBy('id', 'desc')->get();
+        return view('dashboard', compact('posts','user'));
     }
 
     /**
@@ -25,7 +27,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+
+        return view('posts.create', compact('user'));
     }
 
     /**

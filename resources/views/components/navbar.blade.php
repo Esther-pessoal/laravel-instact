@@ -5,11 +5,11 @@
         </div>
 
         <div class="navbar-nav flex-row">
-            <a class="nav-link me-3" href="/ṕosts/create">
+            <a class="nav-link me-3" href="/posts/create">
                 <i class="bi bi-plus-square fs-3"></i>
             </a>
 
-            <a class="nav-link me-3" href="/ṕosts/notifications">
+            <a class="nav-link me-3" href="/posts/notifications">
                 <i class="bi bi-heart fs-3"></i>
             </a>
 
