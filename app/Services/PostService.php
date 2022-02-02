@@ -3,12 +3,24 @@
 namespace App\Services;
 
 use App\Models\Post;
+use App\Repositories\PostRepository;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PostService
 {
+
+    /**
+     * @var PostRepository
+     */
+    protected $repository;
+
+    public function __construct(PostRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function store (array $input, UploadedFile $photo)
     {
         DB::beginTransaction();
@@ -18,7 +30,7 @@ class PostService
             $path = $photo->store('public/images');
             $url = Storage::url($path);
 
-            $post = Post::create([
+            $post = $this->repository->create([
                 'image' => $url,
                 'description' => $input['description'],
                 'user_id' => $input['user_id'],
